@@ -108,7 +108,7 @@ AActor* UBackPackComponent::SpawnActorClass(const FString& Name)
 void UBackPackComponent::SwapItem(int32 DragIndex, int32 DropIndex)
 {
 	// DragIndex:拖动的格子的Index ； DropIndex:放置的格子的Index
-	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, FString::Printf(TEXT("DoSwap!!!  DragIndex:%d DropIndex:%d"), DragIndex, DropIndex));
+	//GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, FString::Printf(TEXT("DoSwap!!!  DragIndex:%d DropIndex:%d"), DragIndex, DropIndex));
 	if (!IsValid(GetWorld())) return;
 	UMyBaseGameInstance* MyGameInstance = Cast<UMyBaseGameInstance>(GetWorld()->GetGameInstance());
 	TArray<FItem_Struct> BackPackArray = MyGameInstance->BackPack_Array;

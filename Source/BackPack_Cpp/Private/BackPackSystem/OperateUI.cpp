@@ -22,7 +22,7 @@ void UOperateUI::OnUseButtonClick()
     
 	// 直接使用 GameInstance 的数组，不要复制
 	TArray<FItem_Struct>& BackPackArray = MyGameInstance->BackPack_Array;
-	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, FString::Printf(TEXT("SlotIndex:%d,Num:%d"), SlotIndex,BackPackArray.Num()));
+	//GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, FString::Printf(TEXT("SlotIndex:%d,Num:%d"), SlotIndex,BackPackArray.Num()));
 }
 
 void UOperateUI::OnThrowButtonClick()

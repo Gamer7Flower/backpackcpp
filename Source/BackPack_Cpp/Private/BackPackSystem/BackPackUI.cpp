@@ -45,19 +45,7 @@ void UBackPackUI::OnCloseButtonClick()
 	ABackPack_CppCharacter* Player = Cast<ABackPack_CppCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	if (!Player) return;
 	Player->BackPackUIController();
-	GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, TEXT("Close"));
+	//GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, TEXT("Close"));
 }
 
-// FEventReply UBackPackUI::OnKeyDown(const FGeometry& MyGeometry, const FKeyEvent& InKeyEvent)
-// {
-// 	// 检查按下的键
-// 	if (InKeyEvent.GetKey() == EKeys::Tab)
-// 	{
-// 		GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, TEXT("Tab"));
-// 		OnCloseButtonClick();
-// 		return FEventReply(true); // 阻止事件继续传递
-// 	}
-//
-// 	// 如果不处理，调用父类默认行为
-// 	return Super::OnKeyDown(MyGeometry, InKeyEvent);
-// }
+

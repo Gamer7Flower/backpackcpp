@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"E:\\Unreal Engine 5\\UE5.4_Projects\\BackPack_Cpp\\Source\\BackPack_Cpp\\BackPack_Cpp.Build.cs",
-		"E:\\Unreal Engine 5\\UE5.4_Projects\\BackPack_Cpp\\Source\\BackPack_Cpp.Target.cs",
-		"E:\\Unreal Engine 5\\UE5.4_Projects\\BackPack_Cpp\\Source\\BackPack_CppEditor.Target.cs"
-	],
-	"EngineVersion": "5.4.4"
-}

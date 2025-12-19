@@ -72,19 +72,24 @@ void UBackPackSlot::NativeOnDragDetected(const FGeometry& InGeometry, const FPoi
 
 bool UBackPackSlot::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation )
 {
+	if (!InOperation || !InOperation->Payload) return false;
+	
 	// BackPackSlot是拖动的目标格子，不是拖动的那个函数
 	UBackPackSlot* BackPackSlot = Cast<UBackPackSlot>(InOperation->Payload);
-	if (BackPackSlot)
+	if (!BackPackSlot) return false;
+	
+	// 检查边界（如果放置的格子Index小于0无效）
+	if (BackPackSlot->Index < 0 || this->Index < 0) return false;
+	
+	UWorld* World = GetWorld();
+	if (!World) return false;
+	Player =Cast<ABackPack_CppCharacter>(World->GetFirstPlayerController()->GetCharacter());
+	if (Player && Player->BackPackComponent)
 	{
-		UWorld* World = GetWorld();
-		if (!World) return false;
-		Player =Cast<ABackPack_CppCharacter>(World->GetFirstPlayerController()->GetCharacter());
-		if (Player && Player->BackPackComponent)
-		{
-			Player->BackPackComponent->SwapItem(BackPackSlot->Index, this->Index);
-			return true;
-		}
+		Player->BackPackComponent->SwapItem(BackPackSlot->Index, this->Index);
+		return true;  // !!
 	}
+	
 	return false;
 }
 

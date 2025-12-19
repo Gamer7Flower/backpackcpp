@@ -108,18 +108,23 @@ AActor* UBackPackComponent::SpawnActorClass(const FString& Name)
 void UBackPackComponent::SwapItem(int32 DragIndex, int32 DropIndex)
 {
 	// DragIndex:拖动的格子的Index ； DropIndex:放置的格子的Index
-	//GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, FString::Printf(TEXT("DoSwap!!!  DragIndex:%d DropIndex:%d"), DragIndex, DropIndex));
+
+	// 边界检查1：如果两个格子的Index都小于零直接返回
+	if (DragIndex < 0 || DropIndex < 0) return;
+
+	// 边界检查2：如果两个格子的Index相等直接返回
+	if (DragIndex == DropIndex) return;
+	
 	if (!IsValid(GetWorld())) return;
 	UMyBaseGameInstance* MyGameInstance = Cast<UMyBaseGameInstance>(GetWorld()->GetGameInstance());
-	TArray<FItem_Struct> BackPackArray = MyGameInstance->BackPack_Array;
+	TArray<FItem_Struct>& BackPackArray = MyGameInstance->BackPack_Array;
 	
 	FItem_Struct TempItem = BackPackArray[DragIndex];
-	BackPackArray[DragIndex] = BackPackArray[DropIndex];
+	BackPackArray[DragIndex] = BackPackArray[DropIndex];  // !!!
 	BackPackArray[DropIndex] = TempItem;
 	MyGameInstance->BackPack_Array = BackPackArray;
 	if (BackPackUI)
 	{
-		//GEngine->AddOnScreenDebugMessage(1, 5.f, FColor::Red, TEXT("Refresh?"));
 		BackPackUI->BackPackTransfer = BackPackArray;
 		BackPackUI->RefreshBackPack();
 	}
